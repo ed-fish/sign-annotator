@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-marker-green: #22c55e;
+  --color-marker-red: #ef4444;
+  --color-marker-blue: #3b82f6;
+  --color-marker-purple: #a855f7;
+  --color-marker-gray: #6b7280;
+  --color-marker-lightgray: #9ca3af;
+  --color-marker-orange: #f97316;
+  --color-marker-yellow: #eab308;
+  --color-marker-cyan: #06b6d4;
+  --color-marker-pink: #ec4899;
+  --color-surface-0: #18181b;
+  --color-surface-1: #27272a;
+  --color-surface-2: #3f3f46;
+  --color-surface-3: #52525b;
+  --color-accent: #6366f1;
+  --color-accent-hover: #818cf8;
+  --color-pending: #f59e0b;
+  --color-unconfirmed: #f59e0b;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-1);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}
+
+/* Timeline canvas cursor */
+.timeline-canvas {
+  cursor: crosshair;
+}
+
+/* Video overlay flash */
+@keyframes marker-flash {
+  0% { opacity: 0.6; }
+  100% { opacity: 0; }
+}
+.marker-flash {
+  animation: marker-flash 0.3s ease-out forwards;
+}
+
+/* Unconfirmed marker pulse */
+@keyframes marker-pulse {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.7; transform: scaleY(1.1); }
+}
+.marker-unconfirmed {
+  animation: marker-pulse 0.8s ease-in-out infinite;
+}
